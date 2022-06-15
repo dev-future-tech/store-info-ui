@@ -14,10 +14,23 @@ export class StoreComponent implements OnInit {
   }
 
   getStoreDetails(): void {
+    this.storeService.getStoreParallel('146aa413-f690-44da-92da-68df13af0448').subscribe({
+      next: (data) => console.log(`Data is: ${JSON.stringify(data)}`),
+      complete: () => console.log('Done')
+    });
+  }
+
+  getStore(): void {
+    this.storeService.getStore('146aa413-f690-44da-92da-68df13af0448').subscribe({
+      next: (data) => console.log(`Data is: ${JSON.stringify(data)}`),
+      complete: () => console.log('Done')
+    });
+  }
+
+  getStoreHours(): void {
     this.storeService.getStoreHours('146aa413-f690-44da-92da-68df13af0448').subscribe({
       next: (data) => console.log(`Data is: ${JSON.stringify(data)}`),
       complete: () => console.log('Done')
     });
-
   }
 }
