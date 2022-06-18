@@ -1,0 +1,12 @@
+[
+    {
+        "context" : ["/stores"],
+        "target" : "http://localhost:8020",
+        "secure" : false,
+        "changeOrigin" : true,
+        "logLevel" : "debug",
+        "pathRewrite" : {
+            "^/stores": ""
+        }
+    }
+]

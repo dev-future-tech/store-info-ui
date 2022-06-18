@@ -1,0 +1,16 @@
+.mat-header-row {
+    display: none;
+}
+
+.hoursTable {
+    max-width: 220px;;
+}
+
+.mat-cell {
+    padding: 8px 8px 8px 0;
+    vertical-align: middle;
+}
+
+.mat-row {
+    height: auto;
+}

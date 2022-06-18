@@ -19,11 +19,11 @@ export class StoreService {
   }
 
   getStore(storeId: string) : Observable<Store> {
-    return this.http.get<Store>(`http://localhost:8020/store/v1/${storeId}`);
+    return this.http.get<Store>(`http://localhost:4200/stores/store/v1/${storeId}`);
   }
 
   getStoreHours(storeId: string): Observable<Schedule[]> {
-    return this.http.get<Schedule[]>(`http://localhost:8020/store/v1/${storeId}/schedule`);
+    return this.http.get<Schedule[]>(`http://localhost:4200/stores/store/v1/${storeId}/schedule`);
   }
 }
 

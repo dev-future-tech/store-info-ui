@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map, mergeMap } from 'rxjs';
+import { Store } from '../_model';
 import { StoreService } from '../_service/store.service';
 
 @Component({
@@ -8,29 +11,27 @@ import { StoreService } from '../_service/store.service';
 })
 export class StoreComponent implements OnInit {
 
-  constructor(private storeService: StoreService) { }
+  @Input('store-id')
+  storeId = "";
+
+  displayError = false;
+
+  store: Store = {
+    store_id: '',
+    name: '',
+    phone_no: ''
+  };
+
+  constructor(private storeService: StoreService) {
+    }
 
   ngOnInit(): void {
+    this.storeService.getStore(this.storeId)
+    .subscribe({
+      next: (store) => this.store = store,
+      error: (err) => this.displayError = true,
+      complete: () => console.log('Done')
+    });  
   }
 
-  getStoreDetails(): void {
-    this.storeService.getStoreParallel('146aa413-f690-44da-92da-68df13af0448').subscribe({
-      next: (data) => console.log(`Data is: ${JSON.stringify(data)}`),
-      complete: () => console.log('Done')
-    });
-  }
-
-  getStore(): void {
-    this.storeService.getStore('146aa413-f690-44da-92da-68df13af0448').subscribe({
-      next: (data) => console.log(`Data is: ${JSON.stringify(data)}`),
-      complete: () => console.log('Done')
-    });
-  }
-
-  getStoreHours(): void {
-    this.storeService.getStoreHours('146aa413-f690-44da-92da-68df13af0448').subscribe({
-      next: (data) => console.log(`Data is: ${JSON.stringify(data)}`),
-      complete: () => console.log('Done')
-    });
-  }
 }
