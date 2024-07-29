@@ -2,6 +2,12 @@
     <mat-card-title>{{store.name}}</mat-card-title>
     <mat-card-content>
         Phone: {{store.phone_no}}
+        <div *ngIf="store?.address">
+            Street: {{store.address?.street_1}}, {{store.address?.street_2}}<br>
+            City: {{store.address?.city}},<br>
+            State: {{store.address?.state}},<br>
+            Country: {{store.address?.country}}, {{store.address?.postal_code}}
+        </div>
     </mat-card-content>
 </mat-card>
 

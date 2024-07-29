@@ -1,0 +1,12 @@
+[
+    {
+        "context" : ["/stores"],
+        "target" : "https://mertzhomenickerdmanmclaughlinflatley.newapp.io",
+        "secure" : false,
+        "changeOrigin" : true,
+        "logLevel" : "debug",
+        "pathRewrite" : {
+            "^/stores": ""
+        }
+    }
+]

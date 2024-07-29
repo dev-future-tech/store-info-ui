@@ -16,10 +16,7 @@ export class StoreComponent implements OnInit {
 
   displayError = false;
 
-  store: Store = {
-    store_id: '',
-    name: '',
-    phone_no: ''
+  store: Partial<Store> = {
   };
 
   constructor(private storeService: StoreService) {
@@ -28,7 +25,10 @@ export class StoreComponent implements OnInit {
   ngOnInit(): void {
     this.storeService.getStore(this.storeId)
     .subscribe({
-      next: (store) => this.store = store,
+      next: (store) => {
+        this.store = store;
+        console.log(JSON.stringify(store));
+      },
       error: (err) => this.displayError = true,
       complete: () => console.log('Done')
     });  

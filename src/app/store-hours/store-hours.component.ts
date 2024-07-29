@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Schedule } from '../_model';
 import { StoreService } from '../_service/store.service';
 
+
 @Component({
   selector: 'app-store-hours',
   templateUrl: './store-hours.component.html',
@@ -15,6 +16,7 @@ export class StoreHoursComponent implements OnInit {
 
   displayError = false;
 
+
   dataSource = new MatTableDataSource<Schedule>([]);
   columnNames = ['day', 'hours'];
 
@@ -26,7 +28,10 @@ export class StoreHoursComponent implements OnInit {
       next: (data) => {
         this.dataSource.data = data;
       },
-      error: (err) => this.displayError = true,
+      error: (err) => {
+        this.displayError = true;
+        console.log(`Error getting store hours: ${err}`);
+      }
     });
   }
 
